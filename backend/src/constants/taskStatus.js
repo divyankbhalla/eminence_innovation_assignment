@@ -1,0 +1,8 @@
+const TASK_STATUS = Object.freeze({
+    PENDING: 'PENDING',
+    IN_PROGRESS: 'IN_PROGRESS',
+    COMPLETED: 'COMPLETED',
+    CANCELLED: 'CANCELLED'
+});
+
+export default TASK_STATUS;
