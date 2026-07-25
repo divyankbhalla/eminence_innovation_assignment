@@ -1,0 +1,36 @@
+<mat-nav-list>
+    <!-- Dashboard -->
+    <a
+        mat-list-item
+        routerLink="/dashboard"
+        routerLinkActive="active">
+        <mat-icon matListItemIcon>
+            dashboard
+        </mat-icon>
+        Dashboard
+    </a>
+
+    <!-- Tasks -->
+    <a
+        mat-list-item
+        routerLink="/tasks"
+        routerLinkActive="active">
+        <mat-icon matListItemIcon>
+            task
+        </mat-icon>
+        My Tasks
+    </a>
+
+    <!-- Users (Manager Only) -->
+    <a
+        *ngIf="auth.isManager()"
+        mat-list-item
+        routerLink="/users"
+        routerLinkActive="active">
+        <mat-icon matListItemIcon>
+            group
+        </mat-icon>
+        Users
+    </a>
+
+</mat-nav-list>

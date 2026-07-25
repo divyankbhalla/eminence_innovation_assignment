@@ -1,0 +1,22 @@
+.spacer {
+    flex: 1;
+}
+
+.filters {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+mat-form-field {
+    min-width: 250px;
+    flex: 1;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+}

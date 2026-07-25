@@ -1,0 +1,122 @@
+<mat-card>
+
+    <mat-card-header>
+
+        <mat-card-title>
+
+            My Tasks
+
+        </mat-card-title>
+
+        <span class="spacer"></span>
+
+        <button
+            mat-raised-button
+            color="primary"
+            (click)="onCreateTask()">
+
+            Create Task
+
+        </button>
+
+    </mat-card-header>
+
+    <mat-card-content>
+
+        <div class="toolbar">
+
+            <mat-form-field appearance="outline">
+
+                <mat-label>Search</mat-label>
+
+                <input
+                    matInput
+                    [(ngModel)]="search"
+                    (keyup)="applyFilters()"
+                    placeholder="Search">
+
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+
+                <mat-label>Status</mat-label>
+
+                <mat-select
+                    [(value)]="selectedStatus"
+                    (selectionChange)="applyFilters()">
+
+                    <mat-option value="">All</mat-option>
+
+                    <mat-option value="PENDING">Pending</mat-option>
+
+                    <mat-option value="IN_PROGRESS">In Progress</mat-option>
+
+                    <mat-option value="COMPLETED">Completed</mat-option>
+
+                </mat-select>
+
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+
+                <mat-label>Priority</mat-label>
+
+                <mat-select
+                    [(value)]="selectedPriority"
+                    (selectionChange)="applyFilters()">
+
+                    <mat-option value="">All</mat-option>
+
+                    <mat-option value="LOW">Low</mat-option>
+
+                    <mat-option value="MEDIUM">Medium</mat-option>
+
+                    <mat-option value="HIGH">High</mat-option>
+
+                </mat-select>
+
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+
+                <mat-label>Assigned User</mat-label>
+
+                <mat-select
+                    [(value)]="selectedUser"
+                    (selectionChange)="applyFilters()">
+
+                    <mat-option value="">All Users</mat-option>
+
+                    <mat-option
+                        *ngFor="let user of users"
+                        [value]="user._id">
+
+                        {{ user.username }}
+
+                    </mat-option>
+
+                </mat-select>
+
+            </mat-form-field>
+
+        </div>
+
+        <div *ngIf="loading" class="loading">
+
+            <mat-spinner></mat-spinner>
+
+        </div>
+
+        <ng-container *ngIf="!loading">
+
+            <app-task-table
+                [tasks]="filteredTasks"
+                (edit)="onEditTask($event)"
+                (delete)="onDeleteTask($event)">
+            </app-task-table>
+
+        </ng-container>
+
+    </mat-card-content>
+
+</mat-card>

@@ -1,0 +1,12 @@
+@use '@angular/material' as mat;
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 500px;
+}
+
+mat-form-field {
+    width: 100%;
+}

@@ -21,7 +21,7 @@ router.use(authenticate);
 router.post("/", createTaskValidator, validate, create);
 router.get("/", getAll);
 router.get("/:id", taskIdValidator, validate, getById);
-router.put("/:id", taskIdValidator, updateTaskValidator, validate, update);
+router.patch("/:id", taskIdValidator, updateTaskValidator, validate, update);
 router.delete("/:id", taskIdValidator, validate, remove);
 
 export default router;

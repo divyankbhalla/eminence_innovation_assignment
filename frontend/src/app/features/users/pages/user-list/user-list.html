@@ -1,0 +1,114 @@
+<mat-card>
+
+    <mat-card-header>
+
+        <mat-card-title>
+
+            User Management
+
+        </mat-card-title>
+
+        <span class="spacer"></span>
+
+        <!-- Add if Create User is required from frontend -->
+        <!-- <button
+            mat-raised-button
+            color="primary"
+            (click)="onCreateUser()">
+
+            Create User
+
+        </button> -->
+
+    </mat-card-header>
+
+    <mat-card-content>
+
+        <!-- Filters -->
+
+        <div class="filters">
+
+            <mat-form-field appearance="outline">
+
+                <mat-label>
+
+                    Search User
+
+                </mat-label>
+
+                <input
+                    matInput
+                    [(ngModel)]="search"
+                    (ngModelChange)="applyFilters()"
+                    placeholder="Search by username or email">
+
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+
+                <mat-label>
+
+                    Role
+
+                </mat-label>
+
+                <mat-select
+                    [(ngModel)]="selectedRole"
+                    (selectionChange)="applyFilters()">
+
+                    <mat-option value="">
+
+                        All Roles
+
+                    </mat-option>
+
+                    <mat-option value="MANAGER">
+
+                        Manager
+
+                    </mat-option>
+
+                    <mat-option value="TEAM_LEAD">
+
+                        Team Lead
+
+                    </mat-option>
+
+                    <mat-option value="EMPLOYEE">
+
+                        Employee
+
+                    </mat-option>
+
+                </mat-select>
+
+            </mat-form-field>
+
+        </div>
+
+        <!-- Loader -->
+
+        <div
+            *ngIf="loading; else userTable"
+            class="loading">
+
+            <mat-spinner></mat-spinner>
+
+        </div>
+
+        <!-- User Table -->
+
+        <ng-template #userTable>
+
+            <app-user-table
+                [users]="filteredUsers"
+                (edit)="onEditUser($event)"
+                (assignLead)="onAssignLead($event)"
+                (delete)="onDeleteUser($event)">
+            </app-user-table>
+
+        </ng-template>
+
+    </mat-card-content>
+
+</mat-card>

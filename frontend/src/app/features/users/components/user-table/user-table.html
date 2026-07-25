@@ -1,0 +1,159 @@
+<table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- Username -->
+
+    <ng-container matColumnDef="username">
+
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+
+            Username
+
+        </th>
+
+        <td mat-cell *matCellDef="let user">
+
+            {{ user.username }}
+
+        </td>
+
+    </ng-container>
+
+    <!-- Email -->
+
+    <ng-container matColumnDef="email">
+
+        <th mat-header-cell *matHeaderCellDef>
+
+            Email
+
+        </th>
+
+        <td mat-cell *matCellDef="let user">
+
+            {{ user.email }}
+
+        </td>
+
+    </ng-container>
+
+    <!-- Role -->
+
+    <ng-container matColumnDef="role">
+
+        <th mat-header-cell *matHeaderCellDef>
+
+            Role
+
+        </th>
+
+        <td mat-cell *matCellDef="let user">
+
+            <mat-chip highlighted>
+
+                {{ user.role }}
+
+            </mat-chip>
+
+        </td>
+
+    </ng-container>
+
+    <!-- Team Lead -->
+
+    <ng-container matColumnDef="teamLead">
+
+        <th mat-header-cell *matHeaderCellDef>
+
+            Team Lead
+
+        </th>
+
+        <td mat-cell *matCellDef="let user">
+
+            {{ user.teamLead?.username || '-' }}
+
+        </td>
+
+    </ng-container>
+
+    <!-- Status -->
+
+    <ng-container matColumnDef="status">
+
+        <th mat-header-cell *matHeaderCellDef>
+
+            Status
+
+        </th>
+
+        <td mat-cell *matCellDef="let user">
+
+            <mat-chip highlighted>
+
+                {{ user.isActive ? 'Active' : 'Inactive' }}
+
+            </mat-chip>
+
+        </td>
+
+    </ng-container>
+
+    <!-- Actions -->
+
+    <ng-container matColumnDef="actions">
+
+        <th mat-header-cell *matHeaderCellDef>
+
+            Actions
+
+        </th>
+
+        <td mat-cell *matCellDef="let user">
+
+            <button
+                mat-icon-button
+                color="primary"
+                (click)="onEdit(user)">
+
+                <mat-icon>edit</mat-icon>
+
+            </button>
+
+            <!-- <button
+                mat-icon-button
+                color="accent"
+                (click)="onAssignLead(user)">
+
+                <mat-icon>supervisor_account</mat-icon>
+
+            </button> -->
+
+            <button
+                mat-icon-button
+                color="warn"
+                (click)="onDelete(user)">
+
+                <mat-icon>delete</mat-icon>
+
+            </button>
+
+        </td>
+
+    </ng-container>
+
+    <tr
+        mat-header-row
+        *matHeaderRowDef="displayedColumns">
+    </tr>
+
+    <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns">
+    </tr>
+
+</table>
+
+<mat-paginator
+    [pageSize]="10"
+    [pageSizeOptions]="[5,10,20]">
+</mat-paginator>

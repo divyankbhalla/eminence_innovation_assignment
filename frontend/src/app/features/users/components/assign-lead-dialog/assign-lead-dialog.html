@@ -1,0 +1,62 @@
+<h2 mat-dialog-title>
+
+    Assign Team Lead
+
+</h2>
+
+<mat-dialog-content>
+    <p>
+        <strong>Employee:</strong>
+        {{ data.user.username }}
+    </p>
+
+    <form [formGroup]="form">
+
+        <mat-form-field
+            appearance="outline"
+            class="full-width">
+
+            <mat-label>
+
+                Team Lead
+
+            </mat-label>
+
+            <mat-select formControlName="teamLead">
+
+                <mat-option
+                    *ngFor="let lead of data.teamLeads"
+                    [value]="lead._id">
+
+                    {{ lead.username }}
+
+                </mat-option>
+
+            </mat-select>
+
+        </mat-form-field>
+
+    </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+
+    <button
+        mat-button
+        (click)="cancel()">
+
+        Cancel
+
+    </button>
+
+    <button
+        mat-raised-button
+        color="primary"
+        (click)="save()">
+
+        Save
+
+    </button>
+
+</mat-dialog-actions>

@@ -1,0 +1,31 @@
+mat-card {
+    margin: 24px;
+}
+
+mat-card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.spacer {
+    flex: 1;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    padding: 48px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+mat-form-field {
+  min-width: 220px;
+  flex: 1;
+}
